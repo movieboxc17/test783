@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Embedded Office Form</title>
+    <title>Office365 Form</title>
     <style>
         /* Reset and Basic Styling */
         * {
@@ -14,12 +14,59 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: radial-gradient(circle at 50% 50%, #74ebd5, #ACB6E5, #485563);
+            background: linear-gradient(120deg, #74ebd5, #ACB6E5);
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             overflow: hidden;
+            position: relative;
+        }
+
+        /* Animated background circles */
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            animation: move 20s infinite ease-in-out;
+            pointer-events: none;
+        }
+
+        .circle1 {
+            width: 500px;
+            height: 500px;
+            top: -200px;
+            left: -200px;
+            animation-duration: 25s;
+        }
+
+        .circle2 {
+            width: 400px;
+            height: 400px;
+            bottom: -150px;
+            right: -100px;
+            animation-duration: 20s;
+        }
+
+        .circle3 {
+            width: 300px;
+            height: 300px;
+            top: 150px;
+            right: -150px;
+            animation-duration: 22s;
+        }
+
+        /* Keyframes for moving circles */
+        @keyframes move {
+            0% {
+                transform: translate(0, 0);
+            }
+            50% {
+                transform: translate(100px, 100px);
+            }
+            100% {
+                transform: translate(0, 0);
+            }
         }
 
         /* Form Container */
@@ -56,6 +103,26 @@
             opacity: 0;
             transform: scale(0.95);
             animation: fadeInScale 1s 1s ease forwards;
+        }
+
+        /* Button Hover and Interactive Effects */
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 12px 24px;
+            font-size: 1.2em;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 123, 255, 0.6);
         }
 
         /* Hover and Focus Effects */
@@ -119,11 +186,20 @@
     </style>
 </head>
 <body>
+
+    <!-- Moving background circles -->
+    <div class="circle circle1"></div>
+    <div class="circle circle2"></div>
+    <div class="circle circle3"></div>
+
     <div id="form-container">
         <h1>Office Form</h1>
         <iframe src="https://forms.office.com/Pages/ResponsePage.aspx?id=_zyP38scPUGHUy2wGWmrN1VYh7aTm_RNkSsggCwPZ05UN1NTTjlZTDZYMUxHMDczTDBCTkdNUzdXVy4u&embed=true"
             allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen>
         </iframe>
+        <!-- Example button -->
+        <button>Submit Form</button>
     </div>
+
 </body>
 </html>

@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Office Form</title>
+    <title>Embedded Office Form</title>
     <style>
-        /* Basic styling and reset */
+        /* Reset and Basic Styling */
         * {
             margin: 0;
             padding: 0;
@@ -14,63 +14,64 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #74ebd5, #ACB6E5);
-            height: 100vh;
+            background: radial-gradient(circle at 50% 50%, #74ebd5, #ACB6E5, #485563);
             display: flex;
             justify-content: center;
             align-items: center;
+            height: 100vh;
             overflow: hidden;
         }
 
-        /* Container for the form */
+        /* Form Container */
         #form-container {
-            background-color: #ffffff;
+            background: rgba(255, 255, 255, 0.85);
             border-radius: 20px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
             padding: 30px;
             width: 100%;
-            max-width: 720px;
-            transform: translateY(50px);
-            animation: slideUp 1s ease-out forwards;
-            transition: all 0.3s ease-in-out;
+            max-width: 800px;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15), inset 0 0 20px rgba(0, 255, 255, 0.2);
+            transform: translateY(60px);
+            animation: slideUp 1s ease forwards;
+            transition: transform 0.4s ease, box-shadow 0.3s ease;
+            backdrop-filter: blur(10px);
         }
 
-        /* Form title */
+        /* Form Title */
         h1 {
+            font-size: 2.5em;
             text-align: center;
-            font-size: 2em;
-            color: #3a3a3a;
             margin-bottom: 20px;
+            color: #007bff;
             opacity: 0;
             animation: fadeIn 1s 0.5s ease forwards;
         }
 
-        /* Styling for iframe */
+        /* Styling for the iframe */
         iframe {
-            border-radius: 15px;
             width: 100%;
-            height: 480px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            transform: scale(0.9);
+            height: 500px;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
             opacity: 0;
-            transition: transform 0.4s ease, opacity 0.4s ease;
-            animation: fadeInScale 1s 0.8s ease forwards;
+            transform: scale(0.95);
+            animation: fadeInScale 1s 1s ease forwards;
         }
 
-        /* Hover effects */
+        /* Hover and Focus Effects */
         #form-container:hover {
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            transform: scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25), inset 0 0 30px rgba(0, 255, 255, 0.2);
+            transform: translateY(0);
         }
 
         #form-container:hover iframe {
             transform: scale(1);
         }
 
-        /* Animations */
+        /* Keyframe Animations */
         @keyframes slideUp {
             from {
-                transform: translateY(50px);
+                transform: translateY(60px);
                 opacity: 0;
             }
             to {
@@ -90,7 +91,7 @@
 
         @keyframes fadeInScale {
             from {
-                transform: scale(0.9);
+                transform: scale(0.95);
                 opacity: 0;
             }
             to {
@@ -99,7 +100,7 @@
             }
         }
 
-        /* Media queries for responsive design */
+        /* Responsive Styling */
         @media (max-width: 768px) {
             iframe {
                 height: 400px;
@@ -110,12 +111,16 @@
             iframe {
                 height: 320px;
             }
+
+            h1 {
+                font-size: 1.8em;
+            }
         }
     </style>
 </head>
 <body>
     <div id="form-container">
-        <h1>Office Form</h1>
+        <h1>Interactive Survey Form</h1>
         <iframe src="https://forms.office.com/Pages/ResponsePage.aspx?id=_zyP38scPUGHUy2wGWmrN1VYh7aTm_RNkSsggCwPZ05UN1NTTjlZTDZYMUxHMDczTDBCTkdNUzdXVy4u&embed=true"
             allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen>
         </iframe>

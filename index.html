@@ -3,50 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Embedded Office Form</title>
+    <title>Office Form</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #e9ecef;
+        /* Basic styling and reset */
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            color: #343a40;
+            overflow: hidden;
         }
 
+        /* Container for the form */
         #form-container {
             background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            padding: 30px;
             width: 100%;
-            max-width: 700px;
+            max-width: 720px;
+            transform: translateY(50px);
+            animation: slideUp 1s ease-out forwards;
             transition: all 0.3s ease-in-out;
         }
 
+        /* Form title */
+        h1 {
+            text-align: center;
+            font-size: 2em;
+            color: #3a3a3a;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeIn 1s 0.5s ease forwards;
+        }
+
+        /* Styling for iframe */
         iframe {
-            border-radius: 10px;
+            border-radius: 15px;
             width: 100%;
             height: 480px;
-            transition: all 0.3s ease-in-out;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transform: scale(0.9);
+            opacity: 0;
+            transition: transform 0.4s ease, opacity 0.4s ease;
+            animation: fadeInScale 1s 0.8s ease forwards;
         }
 
+        /* Hover effects */
         #form-container:hover {
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
             transform: scale(1.02);
         }
 
-        h1 {
-            text-align: center;
-            font-size: 1.8em;
-            margin-bottom: 20px;
-            color: #007bff;
+        #form-container:hover iframe {
+            transform: scale(1);
         }
 
+        /* Animations */
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Media queries for responsive design */
         @media (max-width: 768px) {
             iframe {
                 height: 400px;
@@ -55,14 +108,14 @@
 
         @media (max-width: 480px) {
             iframe {
-                height: 300px;
+                height: 320px;
             }
         }
     </style>
 </head>
 <body>
     <div id="form-container">
-        <h1></h1>
+        <h1>Survey Form</h1>
         <iframe src="https://forms.office.com/Pages/ResponsePage.aspx?id=_zyP38scPUGHUy2wGWmrN1VYh7aTm_RNkSsggCwPZ05UN1NTTjlZTDZYMUxHMDczTDBCTkdNUzdXVy4u&embed=true"
             allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen>
         </iframe>
